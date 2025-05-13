@@ -1,106 +1,97 @@
 <!DOCTYPE html>
-<html lang="en">
-   <head>
-      <!--
-         New Perspectives on HTML5 and CSS3, 8th Edition
-         Tutorial 9
-         Tutorial Case
+<html>
+<head>
+   <!--
+      New Perspectives on HTML5 and CSS3, 8th Edition
+      Tutorial 10
+      Tutorial Case
+
+      Lyman Hall Theater September Schedule
+      Author: Juan Carlos Montero
+      Date: 5/12/2025
+
+      Filename:   index.html
+
+   -->
+
+   <meta charset="utf-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <title>Lyman Hall Theater in September</title>
+   <link href="lht_base.css" rel="stylesheet" />
+   <link href="lht_layout.css" rel="stylesheet" />
+   <link href="lht_calendar.css" rel="stylesheet" />
+   <script src="lht_events.js"></script> 
+   <script src="lht_calendar.js" defer></script>
+</head>
+
+<body>
+   <header>
+      <img src="lht_logo.png" alt="The Lyman Hall Theater" id="logoimg" />
+      <nav> <a id="navicon" href="#"><img src="lht_navicon.png" alt="" /></a>
+         <ul>
+            <li><a href="#">home</a></li>
+            <li><a href="#">events</a></li>
+            <li><a href="#">box office</a></li>
+            <li><a href="#">facilities</a></li>
+            <li><a href="#">directions</a></li>
+            <li><a href="#">contact</a></li>
+         </ul>
+      </nav>
+   </header>
    
-         Tulsa's New Year's Bash
-         Author: Juan Carlos Montero
-         Date: 4/21/2025  
-   
-         Filename: tny_clock.html
-   
-      -->
-      
-      <meta charset="utf-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <title>Tulsa's New Year's Bash</title>
-      <link href="tny_reset.css" rel="stylesheet" />
-      <link href="tny_styles.css" rel="stylesheet" />    
-      <script src = "tny_script.js" defer></script>
-   </head>
+   <article>
+      <h1>September at the Lyman Hall Theater</h1>   
+      <section>
+         <p>Broadway starts out a great autumn at the LHT 
+            with seven performances of <a href="#">Hamilton</a>, 
+            starring Tre Dawes. These performances are sure to sell 
+            out, so order your seats today.
+         </p>
+         <p>We're not done with Broadway yet, as popular singer 
+            Toni Trindle provides a great evening of jazz 
+            standards in <a href="#">Stardust Memories</a> and Ted Gilliam presents
+            his one-man show, <a href="#">The Future is Prologue</a> based on the 
+            writings of George Orwell.
+         </p>      
+         <p>The young will enjoy <a href="#">Have Spacesuit, Will Travel</a> &ndash; a stage 
+            production using more than 500 images 
+           to create a living graphic novel of Robert A. Heinlein's classic science fiction story.
+         </p>
+         <p>School's in session with our continuing lecture
+            series. Mary Dees presents
+            the latest developments in cognitive research with <a href="#">Hacking your
+            Dreams</a> and David Wu discusses quantum entanglement in 
+            <a href="#">What Einstein Got Wrong</a>.
+         </p>
+         <p>Join us on Sunday for <a href="#">Classics 
+            Brunch</a> with music provided by the <a href="#">Carson Quartet</a>. Seating is limited, 
+            so please reserve your table for this popular series.
+         </p>       
+      </section>
+   </article>  
 
-   <body>
-      <header>
-         <nav class="horizontal">       
-            <ul>
-               <li><a href="#">News</a></li>
-               <li><a href="#">Night Beat</a></li>
-               <li><a href="#">Tulsa Times</a></li>
-               <li><a href="#">Calendar</a></li>
-               <li><a href="#">City Links</a></li>
-            </ul>
-         </nav>  
-              
-         <img src="tny_banner.png" id="logoImg" alt="" />
-         <h1>New Year's Eve<br />Bash</h1>
-         <h2 id="timeHeading">Current Time</h2>
-         
-         <div id="dateNow">11/8/2021<br />2:45:12 p.m.</div>
-         
-         <div id="countdown">
-            <div><span id="days">53</span><br />Days</div>
-            <div><span id="hrs">9</span><br />Hours</div>
-            <div><span id="mins">14</span><br />Minutes</div>
-            <div><span id="secs">48</span><br />Seconds</div>
-         </div>
-      </header>
+   <div id="calendar" style="margin: 20px auto; max-width: 800px;"></div>      
 
-      <article>
-         <section>
-            <p>Tulsa's New Year's Eve Bash is back for the 26th year of fun and 
-               excitement. Be sure to arrive 
-               early for all of the festivities and the final countdown.
-               The party starts on December 31 at noon with 
-               the <em>FrostiRun</em> 5K and 10K races. Sign up now or the morning of 
-               the race.
-            </p>
-            <p>Family fun is available at the <em>Kid's Korner</em> with 
-               booths and free activities for the whole family, including 
-               performances from clowns, jugglers, and the wheel walkers of
-               <em>Dominic J</em>.
-            </p>
-         </section>
+   <footer>
+      <nav>
+         <ul>
+            <li><a href="#">Staff</a></li>
+            <li><a href="#">Employment Info</a></li>
+            <li><a href="#">Directions &amp; Parking</a></li>
+         </ul>
+         <ul>
+            <li><a href="#">Box Office</a></li>
+            <li><a href="#">Group Rates</a></li>
+            <li><a href="#">Events</a></li>
+         </ul>            
+      </nav>
+      <section>
+         The Lyman Hall Theater<br />
+         414 Leeward Drive<br />
+         Brookhaven, GA 30319<br />
+         Office: (404) 555 - 4140
+      </section>      
+   </footer>
 
-         <section>
-            <p>The fun continues with <cite>A Taste of Tulsa</cite> 
-               from Tulsa's best eateries, and the artistically inclined should
-               plan on attending the <cite>Winter Art Fair</cite> on Tulsa's 
-               downtown square.
-            </p>
-            <p>Music from <cite>Lester's Blues Band</cite> and <cite>The Jazz 
-               Express</cite> brings us into the New Year. The dancing starts 
-               at 7 p.m. and continues until midnight. From 10 to 11 p.m. we 
-               say goodbye to the old year (and ring in the new) with the 
-               famous New Year's Eve Bash fireworks spectacular. 
-            </p>
-         </section>
-         
-         <nav class="vertical">
-            <h1>Links to the Party</h1>
-            <ul>
-               <li><a href="#">FrostiRun</a></li>
-               <li><a href="#">Kid's Korner</a></li>
-               <li><a href="#">Dominic J</a></li>
-               <li><a href="#">A Taste of Tulsa</a></li>
-               <li><a href="#">Winter Art Fair</a></li>
-               <li><a href="#">Lester's Blues Band</a></li>
-               <li><a href="#">The Jazz Express</a></li>
-               <li><a href="#">The Fireworks Show</a></li>
-               <li><a href="#">Final Countdown</a></li>
-            </ul>
-         </nav>         
-      </article>
-      
-      <footer>
-         <address>
-            New Year's Eve Bash &#183; 
-            340 Main Street, Tulsa, OK 74102 &#183;
-            (918) 555-3481
-         </address>
-      </footer>
-   </body>
-
+</body>
 </html>
