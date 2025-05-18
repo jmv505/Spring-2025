@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wellness Journey Portal</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="weight-tracker.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="creative.css">
+</head>
+<body>
+    <nav class="navbar">
+        <ul>
+            <li><a href="index.html">About Us</a></li>
+            <li><a href="membership.html">Membership</a></li>
+            <li><a href="creative.html">Wellness Journey Portal</a></li>
+        </ul>
+        <button id="nav-toggle" class="nav-toggle">☰</button>
+    </nav>
+    <main>
+        <div class="creative-features-grid">
+        <section id="workout-generator" class="creative-section">
+            <h2>Workout Generator</h2>
+            <button id="generate-workout">Generate Workout</button>
+            <div id="workout-result"></div>
+        </section>
+        <section id="progress-tracker" class="creative-section">
+            <h2>Progress Tracker</h2>
+            <form id="progress-form">
+                <label for="exercise">Exercise:</label>
+                <input type="text" id="exercise" name="exercise" placeholder="e.g. Bench Press">
+                <label for="value">Personal Best:</label>
+                <input type="number" id="value" name="value" placeholder="e.g. 150 (lbs)">
+                <button type="submit">Add Progress</button>
+            </form>
+            <ul id="progress-list"></ul>
+        </section>
+        <section id="motivational-quotes" class="creative-section">
+            <h2>Motivational Quotes Board</h2>
+            <div id="quote-display"></div>
+            <button id="new-quote">Show Another Quote</button>
+            <form id="quote-form">
+                <input type="text" id="user-quote" placeholder="Share your favorite quote!">
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+        <section id="recipe-finder" class="creative-section">
+            <h2>Healthy Recipe Finder</h2>
+            <button id="find-recipe">Find a Recipe</button>
+            <div id="recipe-result"></div>
+        </section>
+        <section id="leaderboard" class="creative-section">
+            <h2>Leaderboard / Challenge Wall</h2>
+            <form id="challenge-form">
+                <label for="challenge-name">Challenge:</label>
+                <input type="text" id="challenge-name" placeholder="e.g. Most Push-Ups">
+                <label for="challenge-score">Score:</label>
+                <input type="number" id="challenge-score" placeholder="e.g. 50">
+                <button type="submit">Submit Score</button>
+            </form>
+            <ul id="leaderboard-list"></ul>
+        </section>
+        <section id="wellness-calendar" class="creative-section">
+            <h2>Wellness Tips Calendar</h2>
+            <div id="calendar-tips"></div>
+            <button id="new-tip">Show Today's Tip</button>
+        </section>
+        <!-- Weight Tracker Section Start (now at the bottom) -->
+        <section id="weight-tracker-section" class="creative-section">
+          <h2>Weight Tracker</h2>
+          <div class="weight-tracker-flex">
+            <div class="weight-tracker-data">
+              <form id="weight-form">
+                <div class="weight-form-row">
+                  <label for="weight-date">Date:</label>
+                  <input type="date" id="weight-date" required>
+                  <label for="weight-value">Weight:</label>
+                  <input type="number" id="weight-value" min="1" step="0.1" required>
+                  <button type="submit">Add</button>
+                </div>
+              </form>
+              <div id="weight-message"></div>
+              <table id="weight-table">
+                <thead>
+                  <tr><th>Date</th><th>Weight (lbs)</th></tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+              <button id="clear-weight-data">Clear All Data</button>
+            </div>
+            <div class="weight-tracker-graph">
+              <canvas id="weight-graph"></canvas>
+            </div>
+          </div>
+        </section>
+        <!-- Weight Tracker Section End -->
+        </div>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+            <p style="margin-top: 8px;">&copy; 2025 Next Level Fitness</p>
+        </div>
+    </footer>
+    <script src="main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="weight-tracker.js"></script>
+    <script src="creative.js"></script>
+</body>
+</html>

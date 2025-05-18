@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gym Website - Membership</title>
+    <link rel="stylesheet" href="membership.css">
+    <style>
+    /* Responsive cropper for mobile */
+    @media (max-width: 600px) {
+      #profile-cropper-container.cropper-responsive {
+        width: 90vw !important;
+        max-width: 320px !important;
+        height: 90vw !important;
+        max-height: 320px !important;
+      }
+      #profile-image-cropper {
+        width: 90vw !important;
+        max-width: 320px !important;
+        height: 90vw !important;
+        max-height: 320px !important;
+      }
+      #zoom-in, #zoom-out {
+        width: 28px !important;
+        height: 28px !important;
+        font-size: 16px !important;
+        right: -32px !important;
+      }
+    }
+    @media (max-width: 400px) {
+      #profile-cropper-container.cropper-responsive {
+        width: 98vw !important;
+        max-width: 98vw !important;
+        height: 98vw !important;
+        max-height: 98vw !important;
+      }
+      #profile-image-cropper {
+        width: 98vw !important;
+        max-width: 98vw !important;
+        height: 98vw !important;
+        max-height: 98vw !important;
+      }
+    }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <ul>
+            <li><a href="index.html">About Us</a></li>
+            <li><a href="membership.html">Membership</a></li>
+            <li><a href="creative.html">Wellness Journey Portal</a></li>
+        </ul>
+        <button id="nav-toggle" class="nav-toggle">☰</button>
+    </nav>
+    <main>
+        <div class="membership-page-center">
+            <form id="membership-form" novalidate>
+                <div id="profile-section" style="text-align:center; margin-bottom: 24px;">
+                    <h2>Profile Picture</h2>
+                    <div style="margin: 0 auto 12px;">
+                        <img id="profile-picture" src="https://via.placeholder.com/100" alt="Profile Picture" style="width:90px; height:90px; border-radius:50%; border:2px solid #ccc; object-fit:cover; background:#eee; display:inline-block;">
+                        <span id="profile-picture-emoji" style="font-size:60px; display:none;"></span>
+                    </div>
+                    <div style="display:flex; flex-direction:row; gap:12px; align-items:center; margin-top:8px; margin-bottom:4px;">
+                        <button type="button" id="choose-avatar" style="min-width:140px;height:42px;font-size:1em;border-radius:7px;font-weight:600;">Choose Avatar</button>
+                        <input type="file" id="upload-image" accept="image/*" style="display:none;">
+                        <button type="button" id="upload-btn" style="min-width:140px;height:42px;font-size:1em;border-radius:7px;font-weight:600;">Upload Image</button>
+                        <button type="button" id="remove-image-btn" style="background:#ff9800; color:#fff; border:none; border-radius:6px; padding:8px 18px; font-weight:bold; cursor:pointer; margin-left:10px;">Remove Image</button>
+                    </div>
+                    <div id="upload-error" style="color:#d32f2f; font-size:0.95em; margin-top:6px; display:none;"></div>
+                    <div id="profile-overlay" style="display:none; position:fixed; z-index:10000; left:0; top:0; width:100vw; height:100vh; background:rgba(30,30,30,0.74); align-items:center; justify-content:center;">
+  <div id="profile-cropper-container" class="cropper-responsive" style="display:none; margin:0 auto; position:relative; width:220px; height:220px;">
+    <canvas id="profile-image-cropper" width="220" height="220" style="border-radius:50%; background:#eee; box-shadow:0 1px 12px rgba(0,0,0,0.13);"></canvas>
+    <button type="button" id="zoom-in" style="position:absolute; right:-36px; top:24px; width:32px; height:32px; border-radius:50%; background:#1976d2; color:#fff; border:none; font-weight:bold; cursor:pointer; font-size:20px;">+</button>
+    <button type="button" id="zoom-out" style="position:absolute; right:-36px; top:72px; width:32px; height:32px; border-radius:50%; background:#1976d2; color:#fff; border:none; font-weight:bold; cursor:pointer; font-size:20px;">-</button>
+  </div>
+</div>
+                    <div id="avatar-chooser-window" style="display:none; margin:12px auto 0; width:320px; height:220px; background:#fff; border-radius:14px; box-shadow:0 2px 18px rgba(0,0,0,0.14); position:relative; overflow:hidden;">
+  <div style="width:100%; text-align:center; font-weight:600; margin:8px 0 6px 0; font-size:1.08em;">Choose an Avatar</div>
+  <button id="avatar-left-arrow" style="position:absolute; left:6px; top:50%; transform:translateY(-50%); z-index:2; background:#1976d2; color:#fff; border:none; border-radius:50%; width:28px; height:28px; font-size:18px; cursor:pointer; display:flex; align-items:center; justify-content:center;">&#8592;</button>
+  <button id="avatar-right-arrow" style="position:absolute; right:6px; top:50%; transform:translateY(-50%); z-index:2; background:#1976d2; color:#fff; border:none; border-radius:50%; width:28px; height:28px; font-size:18px; cursor:pointer; display:flex; align-items:center; justify-content:center;">&#8594;</button>
+  
+  <div id="avatar-chooser" style="display:flex; flex-wrap:nowrap; gap:10px; overflow-x:auto; overflow-y:hidden; width:260px; height:120px; margin:0 auto; padding:10px 0 10px 0; scroll-behavior:smooth;"></div>
+</div>
+                </div>
+            <h1 style="text-align:center; margin-bottom: 10px; font-size:1.45em;">Membership Form</h1>
+            <label for="name" style="margin-bottom:2px;">Name:</label>
+            <input type="text" id="name" name="name" required style="margin-bottom:10px;">
+            <span class="error" id="name-error"></span>
+
+            <label for="email" style="margin-bottom:2px;">Email:</label>
+            <input type="email" id="email" name="email" required style="margin-bottom:10px;">
+
+                <label for="phone" style="margin-bottom:2px;">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required style="margin-bottom:10px;">
+                <span class="error" id="phone-error"></span>
+
+                <label for="age" style="margin-bottom:2px;">Age:</label>
+                <input type="number" id="age" name="age" min="1" required style="margin-bottom:10px;">
+                <span class="error" id="age-error"></span>
+                <div id="parent-info" style="display:none; margin-top: 8px;">
+                    <h3 style="text-align:center; color:#ff9800;">Parent/Guardian Information</h3>
+                    <label for="parent-name" style="margin-bottom:2px;">Parent's Name:</label>
+                    <input type="text" id="parent-name" name="parent-name" style="margin-bottom:10px;">
+                    <span class="error" id="parent-name-error"></span>
+                    <label for="parent-phone">Parent's Phone Number:</label>
+                    <input type="tel" id="parent-phone" name="parent-phone" pattern="[0-9]{10}">
+                    <span class="error" id="parent-phone-error"></span>
+                    <label for="parent-email">Parent's Email:</label>
+                    <input type="email" id="parent-email" name="parent-email">
+                    <span class="error" id="parent-email-error"></span>
+                    <div style="margin: 12px 0 0 0;">
+                        <input type="checkbox" id="parent-consent" name="parent-consent">
+                        <label for="parent-consent" style="display:inline; font-size:0.98em; vertical-align:middle;">
+                            I, as the parent or legal guardian, hereby give my formal consent for my child to join and participate in activities at the gym.
+                        </label>
+                        <span class="error" id="parent-consent-error"></span>
+                    </div>
+            </div>
+
+            <label for="membership">Membership Type:</label>
+            <select id="membership" name="membership" required>
+                <option value="">Select...</option>
+                <option value="basic">Basic</option>
+                <option value="premium">Premium</option>
+                <option value="vip">VIP</option>
+            </select>
+            <span class="error" id="membership-error"></span>
+
+            <button type="submit">Submit</button>
+        </form>
+        <div id="form-success" class="success-message"></div>
+        <section class="membership-info">
+            <h2 style="text-align:center;">Membership Options & Pricing</h2>
+            <div class="membership-cards">
+                <div class="membership-card">
+                    <h3>Basic</h3>
+                    <p>Access to gym equipment<br>Open gym hours<br>Locker room access</p>
+                    <div class="membership-price">$25/month</div>
+                </div>
+                <div class="membership-card">
+                    <h3>Premium</h3>
+                    <p>All Basic features<br>+ Unlimited group classes<br>+ Sauna & spa access</p>
+                    <div class="membership-price">$45/month</div>
+                </div>
+                <div class="membership-card">
+                    <h3>VIP</h3>
+                    <p>All Premium features<br>+ Personal trainer (2 sessions/month)<br>+ Nutrition consultation</p>
+                    <div class="membership-price">$70/month</div>
+                </div>
+            </div>
+        </section>
+        </div>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+            <p style="margin-top: 8px;">&copy; 2025 Next Level Fitness</p>
+        </div>
+    </footer>
+    <script src="form-validation.js"></script>
+    <script src="main.js"></script>
+    <script src="membership.js"></script>
+</body>
+</html>
